@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../../models/post.model';
+import { Comment } from '../../models/comment.model';
 import { BlogService } from '../../services/blog-service.service';
 import * as $ from 'jquery';
 
@@ -11,7 +12,9 @@ import * as $ from 'jquery';
 })
 export class HomepageComponent implements OnInit {
 
-  posts: Post[];
+  public posts: Post[];
+  public selectedPost: Post[];
+  public postComments: Comment[];
 
   constructor(private blogService: BlogService) { }
 
@@ -25,4 +28,20 @@ export class HomepageComponent implements OnInit {
       this.posts = posts;
     })
   }
+
+  getPostDetails(value){
+    this.blogService.getOnePost(value).subscribe(post => {
+      this.selectedPost = post
+      console.log(this.selectedPost);
+    })
+    this.getPostComments(value)
+  }
+
+  getPostComments(id){
+    this.blogService.getComments(id).subscribe(comments => {
+      this.postComments = comments;
+      console.log('comments', this.postComments)
+    })
+  }
+
 }

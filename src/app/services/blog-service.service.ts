@@ -17,10 +17,14 @@ export class BlogService {
   constructor(private http: HttpClient){}
 
     public getPosts(): Observable<Post[]>{
-      return this.http.get<Post[]>(this.apiUrl + '/posts')
-
+      return this.http.get<Post[]>(this.apiUrl + '/posts');
     }
 
-  
+    public getOnePost(id): Observable<Post[]>{
+      return this.http.get<Post[]>(this.apiUrl + '/posts/' + id)
+    }
 
+    public getComments(id): Observable<Comment[]>{
+      return this.http.get<Comment[]>(this.apiUrl + '/posts/' + id + '/comments')
+    }
 }

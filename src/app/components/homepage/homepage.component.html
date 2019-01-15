@@ -1,9 +1,9 @@
 <div class="app-content">
   <div class="container">
     <div class="blog-cards" *ngFor="let item of posts">
-      <div class="app-card">
+      <div class="app-card" (click)="getPostDetails(item.id)">
         <h4>{{item.title}}</h4>
-        <span>{{item.publish_date | date  }} | {{item.author}}</span>
+        <span>{{item.publish_date | date }} | {{item.author}}</span>
         <div class="post-content" [innerHTML]="item.content"></div>
         <div class="comment-icon">
           <img src="../../../assets/icons/comment.svg" alt="">
