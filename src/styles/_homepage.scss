@@ -1,0 +1,31 @@
+@import './mixins';
+
+.app-card{
+    @include basicContainer;
+    border-radius: 6px;
+    h4{
+        margin-bottom: 0;
+        color: $text-colour;
+    }
+    span{
+        color: $borders;
+        width: 100%;
+    }
+}
+.app-card:hover{
+    cursor: pointer;
+    @include boxShadow;
+}
+.post-content{
+    width: 100%;
+    display: block;
+    color: $text-colour;
+    margin: 10px 0; 
+    p{
+        margin-bottom: 5px;
+    }
+}
+.comment-icon > img{
+    height: 20px;
+}
+
