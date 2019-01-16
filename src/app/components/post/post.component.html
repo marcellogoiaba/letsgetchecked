@@ -5,11 +5,15 @@
         <span>{{selectedPost.publish_date | date }} | {{selectedPost.author}}</span>
         <div class="post-content" [innerHTML]="selectedPost.content"></div>
         <div class="comment-container" >
-          <img src="../../../assets/icons/comment.svg" alt=""><span *ngIf="postComments.length !== 0"> {{numberOfComments}}</span>
-          <input type="text" class="form-control" [(ngModel)]="newComment" (change)="printIt()" placeholder="Add a comment...">
-          <div class="comments" *ngFor="let comment of postComments">
+          <img src="../../../assets/icons/comment.svg" alt="Comments"><span *ngIf="postComments.length !== 0"> {{numberOfComments}}</span>
+          <form class="comment-form">
+            <input type="text" class="form-control"  placeholder="Add a comment...">
+            <button class="app-button"><img src="../../../assets/icons/send.svg" alt="send" (click)="sendComment()"></button>
+          </form>
+          <div class="comments clearfix" *ngFor="let comment of postComments  | sort: 'date'">
             <div class="comment-div">
-              <span>{{comment.content}}</span>
+              <span>{{comment.user}} | {{comment.date | date}} : </span>
+              <p>{{comment.content}}</p>
             </div>
           </div>
         </div>

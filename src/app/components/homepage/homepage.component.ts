@@ -26,7 +26,6 @@ export class HomepageComponent implements OnInit {
   getAllPosts(){
     this.blogService.getPosts().subscribe(posts => {
       this.posts = posts;
-      // this.sortByDate();
       console.log(this.posts)
     });
   }

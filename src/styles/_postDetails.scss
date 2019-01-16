@@ -1,10 +1,30 @@
 @import './mixins';
  
 .comments{
-    
+    margin-top: 10px
 }
 .comment-div{
     padding: 10px;
-    background: $background-hover;
-    color: $text-colour;
+    border: 1px solid $borders;
+    p{
+        display: inline-block;
+        color: $text-colour;
+        margin-bottom: 2px;
+    }
+}
+.comment-form{
+    margin-bottom: 20px;
+    .form-control{
+        width: calc(100% - 36px);
+        display: inline-block;
+        float: left;
+    }
+    img{
+        display: inline-block;
+        float: left;
+        margin: 14px 0 0 14px;
+    }
+    img:hover{
+        cursor: pointer;
+    }
 }

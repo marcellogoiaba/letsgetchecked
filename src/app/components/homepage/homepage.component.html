@@ -1,12 +1,12 @@
 <div class="app-content">
   <div class="container">
     <div class="blog-cards" *ngFor="let item of posts | sort: 'publish_date'">
-      <div class="app-card" routerLink="/post/{{item.id}}" >
+      <div class="app-card home-card" routerLink="/post/{{item.id}}" >
         <h4>{{item.title}}</h4>
         <span>{{item.publish_date | date }} | {{item.author}}</span>
         <div class="post-content" [innerHTML]="item.content"></div>
         <div class="comment-container">
-          <img src="../../../assets/icons/comment.svg" alt="">
+          <img src="../../../assets/icons/comment.svg" alt="Comments">
         </div>
       </div>
     </div>
