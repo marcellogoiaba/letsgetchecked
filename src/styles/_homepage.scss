@@ -25,7 +25,12 @@
         margin-bottom: 5px;
     }
 }
-.comment-icon > img{
-    height: 20px;
+.comment-container {
+    display: inline-block;
+    width: 100%;
+    
+    img{
+        height: 20px;
+    }
 }
 

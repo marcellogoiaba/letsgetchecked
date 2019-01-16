@@ -1,3 +1,18 @@
-<p>
-  post works!
-</p>
+<div class="app-content">
+    <div class="container">
+      <div class="app-card">
+        <h4>{{selectedPost.title}}</h4>
+        <span>{{selectedPost.publish_date | date }} | {{selectedPost.author}}</span>
+        <div class="post-content" [innerHTML]="selectedPost.content"></div>
+        <div class="comment-container" >
+          <img src="../../../assets/icons/comment.svg" alt=""><span *ngIf="postComments.length !== 0"> {{numberOfComments}}</span>
+          <input type="text" class="form-control" [(ngModel)]="newComment" (change)="printIt()" placeholder="Add a comment...">
+          <div class="comments" *ngFor="let comment of postComments">
+            <div class="comment-div">
+              <span>{{comment.content}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

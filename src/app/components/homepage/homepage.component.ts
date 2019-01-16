@@ -5,6 +5,7 @@ import { BlogService } from '../../services/blog-service.service';
 import * as $ from 'jquery';
 
 
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -12,9 +13,9 @@ import * as $ from 'jquery';
 })
 export class HomepageComponent implements OnInit {
 
-  public posts: Post[];
-  public selectedPost: Post[];
-  public postComments: Comment[];
+  public posts: Post[] = [];
+  public selectedPost: Post[] = [];
+  public postComments: Comment[] = [];
 
   constructor(private blogService: BlogService) { }
 
@@ -24,24 +25,9 @@ export class HomepageComponent implements OnInit {
 
   getAllPosts(){
     this.blogService.getPosts().subscribe(posts => {
-      console.log(posts);
       this.posts = posts;
-    })
+      // this.sortByDate();
+      console.log(this.posts)
+    });
   }
-
-  getPostDetails(value){
-    this.blogService.getOnePost(value).subscribe(post => {
-      this.selectedPost = post
-      console.log(this.selectedPost);
-    })
-    this.getPostComments(value)
-  }
-
-  getPostComments(id){
-    this.blogService.getComments(id).subscribe(comments => {
-      this.postComments = comments;
-      console.log('comments', this.postComments)
-    })
-  }
-
 }

@@ -1,0 +1,10 @@
+@import './mixins';
+ 
+.comments{
+    
+}
+.comment-div{
+    padding: 10px;
+    background: $background-hover;
+    color: $text-colour;
+}
