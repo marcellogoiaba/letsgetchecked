@@ -1,3 +1,4 @@
+// model for posts
 export class Post {
     id: number;
     title: string;

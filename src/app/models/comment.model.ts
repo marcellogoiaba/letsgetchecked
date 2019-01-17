@@ -1,3 +1,4 @@
+// model for comments
 export class Comment {
     id: number;
     postId: number;

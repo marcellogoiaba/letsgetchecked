@@ -8,7 +8,7 @@
           <img src="../../../assets/icons/comment.svg" alt="Comments"><span *ngIf="postComments.length !== 0"> {{numberOfComments}}</span>
           <form #addComment="ngForm" class="comment-form" (ngSubmit)="submitComment(addComment)">
             <input type="text" minlength="2" required class="form-control"  #comment="ngModel" ngModel name="comment"  placeholder="Add a comment...">
-            <button type="submit" [disabled]="!addComment.valid" class="app-button"><img src="../../../assets/icons/send.svg" alt="send"></button>
+            <button type="submit" [disabled]="addComment.invalid" class="app-button"><img src="../../../assets/icons/send.svg" alt="send"></button>
           </form>
           <div class="comments clearfix" *ngFor="let comment of postComments  | sort: 'date'">
             <div class="comment-div">

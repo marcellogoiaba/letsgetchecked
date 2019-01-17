@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-
+// this pipe sorts arrays by chosen element( see homepage.component.html line 3 )
 
 @Pipe({
     name: "sort"

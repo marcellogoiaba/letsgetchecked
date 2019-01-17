@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {Pipe, PipeTransform} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -28,7 +28,8 @@ import { OrderByPipe } from './pipes/orderByPipe';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ Post, Comment, BlogService, OrderByPipe],
-  bootstrap: [AppComponent]
+  providers: [Post, Comment, HttpClient, BlogService, OrderByPipe],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
