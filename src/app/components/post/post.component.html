@@ -6,14 +6,14 @@
         <div class="post-content" [innerHTML]="selectedPost.content"></div>
         <div class="comment-container" >
           <img src="../../../assets/icons/comment.svg" alt="Comments"><span *ngIf="postComments.length !== 0"> {{numberOfComments}}</span>
-          <form class="comment-form">
-            <input type="text" class="form-control"  placeholder="Add a comment...">
-            <button class="app-button"><img src="../../../assets/icons/send.svg" alt="send" (click)="sendComment()"></button>
+          <form #addComment="ngForm" class="comment-form" (ngSubmit)="submitComment(addComment)">
+            <input type="text" minlength="2" required class="form-control"  #comment="ngModel" ngModel name="comment"  placeholder="Add a comment...">
+            <button type="submit" [disabled]="!addComment.valid" class="app-button"><img src="../../../assets/icons/send.svg" alt="send"></button>
           </form>
           <div class="comments clearfix" *ngFor="let comment of postComments  | sort: 'date'">
             <div class="comment-div">
               <span>{{comment.user}} | {{comment.date | date}} : </span>
-              <p>{{comment.content}}</p>
+              <p>{{comment.comment}}</p>
             </div>
           </div>
         </div>

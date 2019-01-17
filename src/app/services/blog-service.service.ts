@@ -27,4 +27,11 @@ export class BlogService {
     public getComments(id): Observable<Comment[]>{
       return this.http.get<Comment[]>(this.apiUrl + '/posts/' + id + '/comments')
     }
+
+    public addComment( postId: string, parentId: string, user: string, date: string, comment:string ): Observable<Comment[]>{
+      let jsonBody = {
+        postId, parentId, user, date, comment
+      }
+      return this.http.post<Comment[]>(this.apiUrl + '/posts/' + postId + '/comments', jsonBody)
+    }
 }

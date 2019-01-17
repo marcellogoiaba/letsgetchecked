@@ -12,10 +12,11 @@ import { BlogService } from '../../services/blog-service.service';
 export class PostComponent implements OnInit {
 
   private postId: string = '';
+  private parentId: string = null;
   public postComments: Comment[] = [];
   public numberOfComments: number = 0;
   public selectedPost: Post[] = []; 
-  public newComment: string = '';
+  public user: string = 'Marcelo Silva';
   
 
 
@@ -43,8 +44,14 @@ export class PostComponent implements OnInit {
     })
   }
 
-  sendComment(){
-    console.log(this.newComment)
+  submitComment(form){
+    console.log(form.value.comment);
+    let dateAdded = new Date();
+    let newDate = dateAdded.toDateString();
+    this.blogService.addComment(this.postId, this.parentId, this.user, newDate, form.value.comment  ).subscribe( response => {
+      this.getPostComments(this.postId);
+      form.reset();
+    })
   }
 
 }
